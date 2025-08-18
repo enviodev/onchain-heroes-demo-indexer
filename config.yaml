@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: envio-indexer
+networks:
+- id: 1
+  start_block: 0
+  contracts:
+  - name: GenesisRing
+    address:
+    - 0x8e02d1e68Dff0dCEBf1CDE4eE5f60f1D5A499B1e
+    handler: src/EventHandlers.ts
+    events:
+    - event: Approval(address indexed owner, address indexed account, uint256 indexed id)
+    - event: ApprovalForAll(address indexed owner, address indexed operator, bool isApproved)
+    - event: OwnershipHandoverCanceled(address indexed pendingOwner)
+    - event: OwnershipHandoverRequested(address indexed pendingOwner)
+    - event: OwnershipTransferred(address indexed oldOwner, address indexed newOwner)
+    - event: Transfer(address indexed from, address indexed to, uint256 indexed id)
+- id: 2741
+  start_block: 0
+  contracts:
+  - name: HERO20
+    address:
+    - 0x33EE11cE309854a45B65368C078616ABcb5c6e3d
+    handler: src/EventHandlers.ts
+    events:
+    - event: Approval(address indexed owner, address indexed spender, uint256 amount)
+    - event: OwnershipHandoverCanceled(address indexed pendingOwner)
+    - event: OwnershipHandoverRequested(address indexed pendingOwner)
+    - event: OwnershipTransferred(address indexed oldOwner, address indexed newOwner)
+    - event: Transfer(address indexed from, address indexed to, uint256 amount)
+  - name: HeroERC721AC
+    address:
+    - 0x7c47ea32FD27d1a74Fc6e9F31Ce8162e6Ce070eB
+    handler: src/EventHandlers.ts
+    events:
+    - event: Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)
+    - event: ApprovalForAll(address indexed owner, address indexed operator, bool approved)
+    - event: AutomaticApprovalOfTransferValidatorSet(bool autoApproved)
+    - event: ConsecutiveTransfer(uint256 indexed fromTokenId, uint256 toTokenId, address indexed from, address indexed to)
+    - event: OwnershipHandoverCanceled(address indexed pendingOwner)
+    - event: OwnershipHandoverRequested(address indexed pendingOwner)
+    - event: OwnershipTransferred(address indexed oldOwner, address indexed newOwner)
+    - event: Transfer(address indexed from, address indexed to, uint256 indexed tokenId)
+    - event: TransferValidatorUpdated(address oldValidator, address newValidator)
+  - name: GachaToken
+    address:
+    - 0xB5EC907d0E80F9A1cA9C1942D69Fb558E01140d4
+    handler: src/EventHandlers.ts
+    events:
+    - event: ApprovalForAll(address indexed owner, address indexed operator, bool isApproved)
+    - event: AutomaticApprovalOfTransferValidatorSet(bool autoApproved)
+    - event: OwnershipHandoverCanceled(address indexed pendingOwner)
+    - event: OwnershipHandoverRequested(address indexed pendingOwner)
+    - event: OwnershipTransferred(address indexed oldOwner, address indexed newOwner)
+    - event: RolesUpdated(address indexed user, uint256 indexed roles)
+    - event: TransferBatch(address indexed operator, address indexed from, address indexed to, uint256[] ids, uint256[] amounts)
+    - event: TransferSingle(address indexed operator, address indexed from, address indexed to, uint256 id, uint256 amount)
+    - event: TransferValidatorUpdated(address oldValidator, address newValidator)
+    - event: URI(string value, uint256 indexed id)
+  - name: Weapon721
+    address:
+    - 0x686bFe70F061507065f3E939C12aC9EE5a564dCf
+    handler: src/EventHandlers.ts
+    events:
+    - event: Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)
+    - event: ApprovalForAll(address indexed owner, address indexed operator, bool approved)
+    - event: AutomaticApprovalOfTransferValidatorSet(bool autoApproved)
+    - event: ConsecutiveTransfer(uint256 indexed fromTokenId, uint256 toTokenId, address indexed from, address indexed to)
+    - event: OwnershipHandoverCanceled(address indexed pendingOwner)
+    - event: OwnershipHandoverRequested(address indexed pendingOwner)
+    - event: OwnershipTransferred(address indexed oldOwner, address indexed newOwner)
+    - event: RolesUpdated(address indexed user, uint256 indexed roles)
+    - event: Transfer(address indexed from, address indexed to, uint256 indexed tokenId)
+    - event: TransferValidatorUpdated(address oldValidator, address newValidator)
+    - event: WeaponGenerated(address to, uint256 qty)
+    - event: WeaponMetadataGenerated(uint256 id, uint32 metadata)
+unordered_multichain_mode: true
+preload_handlers: true

@@ -1,0 +1,261 @@
+type GachaToken_ApprovalForAll {
+  id: ID!
+  owner: String!
+  operator: String!
+  isApproved: Boolean!
+}
+
+type GachaToken_AutomaticApprovalOfTransferValidatorSet {
+  id: ID!
+  autoApproved: Boolean!
+}
+
+type GachaToken_OwnershipHandoverCanceled {
+  id: ID!
+  pendingOwner: String!
+}
+
+type GachaToken_OwnershipHandoverRequested {
+  id: ID!
+  pendingOwner: String!
+}
+
+type GachaToken_OwnershipTransferred {
+  id: ID!
+  oldOwner: String!
+  newOwner: String!
+}
+
+type GachaToken_RolesUpdated {
+  id: ID!
+  user: String!
+  roles: BigInt!
+}
+
+type GachaToken_TransferBatch {
+  id: ID!
+  operator: String!
+  from: String!
+  to: String!
+  ids: [BigInt!]!
+  amounts: [BigInt!]!
+}
+
+type GachaToken_TransferSingle {
+  id: ID!
+  operator: String!
+  from: String!
+  to: String!
+  event_id: BigInt!
+  amount: BigInt!
+}
+
+type GachaToken_TransferValidatorUpdated {
+  id: ID!
+  oldValidator: String!
+  newValidator: String!
+}
+
+type GachaToken_URI {
+  id: ID!
+  value: String!
+  event_id: BigInt!
+}
+
+type GenesisRing_Approval {
+  id: ID!
+  owner: String!
+  account: String!
+  event_id: BigInt!
+}
+
+type GenesisRing_ApprovalForAll {
+  id: ID!
+  owner: String!
+  operator: String!
+  isApproved: Boolean!
+}
+
+type GenesisRing_OwnershipHandoverCanceled {
+  id: ID!
+  pendingOwner: String!
+}
+
+type GenesisRing_OwnershipHandoverRequested {
+  id: ID!
+  pendingOwner: String!
+}
+
+type GenesisRing_OwnershipTransferred {
+  id: ID!
+  oldOwner: String!
+  newOwner: String!
+}
+
+type GenesisRing_Transfer {
+  id: ID!
+  from: String!
+  to: String!
+  event_id: BigInt!
+}
+
+type HERO20_Approval {
+  id: ID!
+  owner: String!
+  spender: String!
+  amount: BigInt!
+}
+
+type HERO20_OwnershipHandoverCanceled {
+  id: ID!
+  pendingOwner: String!
+}
+
+type HERO20_OwnershipHandoverRequested {
+  id: ID!
+  pendingOwner: String!
+}
+
+type HERO20_OwnershipTransferred {
+  id: ID!
+  oldOwner: String!
+  newOwner: String!
+}
+
+type HERO20_Transfer {
+  id: ID!
+  from: String!
+  to: String!
+  amount: BigInt!
+}
+
+type HeroERC721AC_Approval {
+  id: ID!
+  owner: String!
+  approved: String!
+  tokenId: BigInt!
+}
+
+type HeroERC721AC_ApprovalForAll {
+  id: ID!
+  owner: String!
+  operator: String!
+  approved: Boolean!
+}
+
+type HeroERC721AC_AutomaticApprovalOfTransferValidatorSet {
+  id: ID!
+  autoApproved: Boolean!
+}
+
+type HeroERC721AC_ConsecutiveTransfer {
+  id: ID!
+  fromTokenId: BigInt!
+  toTokenId: BigInt!
+  from: String!
+  to: String!
+}
+
+type HeroERC721AC_OwnershipHandoverCanceled {
+  id: ID!
+  pendingOwner: String!
+}
+
+type HeroERC721AC_OwnershipHandoverRequested {
+  id: ID!
+  pendingOwner: String!
+}
+
+type HeroERC721AC_OwnershipTransferred {
+  id: ID!
+  oldOwner: String!
+  newOwner: String!
+}
+
+type HeroERC721AC_Transfer {
+  id: ID!
+  from: String!
+  to: String!
+  tokenId: BigInt!
+}
+
+type HeroERC721AC_TransferValidatorUpdated {
+  id: ID!
+  oldValidator: String!
+  newValidator: String!
+}
+
+type Weapon721_Approval {
+  id: ID!
+  owner: String!
+  approved: String!
+  tokenId: BigInt!
+}
+
+type Weapon721_ApprovalForAll {
+  id: ID!
+  owner: String!
+  operator: String!
+  approved: Boolean!
+}
+
+type Weapon721_AutomaticApprovalOfTransferValidatorSet {
+  id: ID!
+  autoApproved: Boolean!
+}
+
+type Weapon721_ConsecutiveTransfer {
+  id: ID!
+  fromTokenId: BigInt!
+  toTokenId: BigInt!
+  from: String!
+  to: String!
+}
+
+type Weapon721_OwnershipHandoverCanceled {
+  id: ID!
+  pendingOwner: String!
+}
+
+type Weapon721_OwnershipHandoverRequested {
+  id: ID!
+  pendingOwner: String!
+}
+
+type Weapon721_OwnershipTransferred {
+  id: ID!
+  oldOwner: String!
+  newOwner: String!
+}
+
+type Weapon721_RolesUpdated {
+  id: ID!
+  user: String!
+  roles: BigInt!
+}
+
+type Weapon721_Transfer {
+  id: ID!
+  from: String!
+  to: String!
+  tokenId: BigInt!
+}
+
+type Weapon721_TransferValidatorUpdated {
+  id: ID!
+  oldValidator: String!
+  newValidator: String!
+}
+
+type Weapon721_WeaponGenerated {
+  id: ID!
+  to: String!
+  qty: BigInt!
+}
+
+type Weapon721_WeaponMetadataGenerated {
+  id: ID!
+  event_id: BigInt!
+  metadata: BigInt!
+}
+
