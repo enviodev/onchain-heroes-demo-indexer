@@ -214,6 +214,42 @@ GenesisRing.Transfer.handler(async ({ event, context }) => {
   };
 
   context.GenesisRing_Transfer.set(entity);
+
+  // Simple player tracking - increment ring count for receiver
+  if (event.params.to !== "0x0000000000000000000000000000000000000000") {
+    let player = await context.GamePlayer.get(event.params.to);
+    if (!player) {
+      player = {
+        id: event.params.to,
+        address: event.params.to,
+        heroCount: BigInt(0),
+        weaponCount: BigInt(0),
+        ringCount: BigInt(1),
+        lastActivity: BigInt(event.block.timestamp),
+        createdAt: BigInt(event.block.timestamp),
+      };
+    } else {
+      player = {
+        ...player,
+        ringCount: player.ringCount + BigInt(1),
+        lastActivity: BigInt(event.block.timestamp),
+      };
+    }
+    context.GamePlayer.set(player);
+  }
+
+  // Decrease ring count for sender (if not from zero address)
+  if (event.params.from !== "0x0000000000000000000000000000000000000000") {
+    let player = await context.GamePlayer.get(event.params.from);
+    if (player && player.ringCount > BigInt(0)) {
+      const updatedPlayer = {
+        ...player,
+        ringCount: player.ringCount - BigInt(1),
+        lastActivity: BigInt(event.block.timestamp),
+      };
+      context.GamePlayer.set(updatedPlayer);
+    }
+  }
 });
 
 HERO20.Approval.handler(async ({ event, context }) => {
@@ -346,6 +382,42 @@ HeroERC721AC.Transfer.handler(async ({ event, context }) => {
   };
 
   context.HeroERC721AC_Transfer.set(entity);
+
+  // Simple player tracking - increment hero count for receiver
+  if (event.params.to !== "0x0000000000000000000000000000000000000000") {
+    let player = await context.GamePlayer.get(event.params.to);
+    if (!player) {
+      player = {
+        id: event.params.to,
+        address: event.params.to,
+        heroCount: BigInt(1),
+        weaponCount: BigInt(0),
+        ringCount: BigInt(0),
+        lastActivity: BigInt(event.block.timestamp),
+        createdAt: BigInt(event.block.timestamp),
+      };
+    } else {
+      player = {
+        ...player,
+        heroCount: player.heroCount + BigInt(1),
+        lastActivity: BigInt(event.block.timestamp),
+      };
+    }
+    context.GamePlayer.set(player);
+  }
+
+  // Decrease hero count for sender (if not from zero address)
+  if (event.params.from !== "0x0000000000000000000000000000000000000000") {
+    let player = await context.GamePlayer.get(event.params.from);
+    if (player && player.heroCount > BigInt(0)) {
+      const updatedPlayer = {
+        ...player,
+        heroCount: player.heroCount - BigInt(1),
+        lastActivity: BigInt(event.block.timestamp),
+      };
+      context.GamePlayer.set(updatedPlayer);
+    }
+  }
 });
 
 HeroERC721AC.TransferValidatorUpdated.handler(async ({ event, context }) => {
@@ -448,6 +520,42 @@ Weapon721.Transfer.handler(async ({ event, context }) => {
   };
 
   context.Weapon721_Transfer.set(entity);
+
+  // Simple player tracking - increment weapon count for receiver
+  if (event.params.to !== "0x0000000000000000000000000000000000000000") {
+    let player = await context.GamePlayer.get(event.params.to);
+    if (!player) {
+      player = {
+        id: event.params.to,
+        address: event.params.to,
+        heroCount: BigInt(0),
+        weaponCount: BigInt(1),
+        ringCount: BigInt(0),
+        lastActivity: BigInt(event.block.timestamp),
+        createdAt: BigInt(event.block.timestamp),
+      };
+    } else {
+      player = {
+        ...player,
+        weaponCount: player.weaponCount + BigInt(1),
+        lastActivity: BigInt(event.block.timestamp),
+      };
+    }
+    context.GamePlayer.set(player);
+  }
+
+  // Decrease weapon count for sender (if not from zero address)
+  if (event.params.from !== "0x0000000000000000000000000000000000000000") {
+    let player = await context.GamePlayer.get(event.params.from);
+    if (player && player.weaponCount > BigInt(0)) {
+      const updatedPlayer = {
+        ...player,
+        weaponCount: player.weaponCount - BigInt(1),
+        lastActivity: BigInt(event.block.timestamp),
+      };
+      context.GamePlayer.set(updatedPlayer);
+    }
+  }
 });
 
 Weapon721.TransferValidatorUpdated.handler(async ({ event, context }) => {

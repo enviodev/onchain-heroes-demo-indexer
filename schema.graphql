@@ -259,3 +259,13 @@ type Weapon721_WeaponMetadataGenerated {
   metadata: BigInt!
 }
 
+type GamePlayer {
+  id: ID!
+  address: String!
+  heroCount: BigInt!
+  weaponCount: BigInt!
+  ringCount: BigInt!
+  lastActivity: BigInt!
+  createdAt: BigInt!
+}
+
