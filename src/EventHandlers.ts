@@ -1,57 +1,11 @@
 /*
  * Please refer to https://docs.envio.dev for a thorough guide on all Envio indexer features
  */
-import {
-  GachaToken,
-  GachaToken_ApprovalForAll,
-  GachaToken_AutomaticApprovalOfTransferValidatorSet,
-  GachaToken_OwnershipHandoverCanceled,
-  GachaToken_OwnershipHandoverRequested,
-  GachaToken_OwnershipTransferred,
-  GachaToken_RolesUpdated,
-  GachaToken_TransferBatch,
-  GachaToken_TransferSingle,
-  GachaToken_TransferValidatorUpdated,
-  GachaToken_URI,
-  GenesisRing,
-  GenesisRing_Approval,
-  GenesisRing_ApprovalForAll,
-  GenesisRing_OwnershipHandoverCanceled,
-  GenesisRing_OwnershipHandoverRequested,
-  GenesisRing_OwnershipTransferred,
-  GenesisRing_Transfer,
-  HERO20,
-  HERO20_Approval,
-  HERO20_OwnershipHandoverCanceled,
-  HERO20_OwnershipHandoverRequested,
-  HERO20_OwnershipTransferred,
-  HERO20_Transfer,
-  HeroERC721AC,
-  HeroERC721AC_Approval,
-  HeroERC721AC_ApprovalForAll,
-  HeroERC721AC_AutomaticApprovalOfTransferValidatorSet,
-  HeroERC721AC_ConsecutiveTransfer,
-  HeroERC721AC_OwnershipHandoverCanceled,
-  HeroERC721AC_OwnershipHandoverRequested,
-  HeroERC721AC_OwnershipTransferred,
-  HeroERC721AC_Transfer,
-  HeroERC721AC_TransferValidatorUpdated,
-  Weapon721,
-  Weapon721_Approval,
-  Weapon721_ApprovalForAll,
-  Weapon721_AutomaticApprovalOfTransferValidatorSet,
-  Weapon721_ConsecutiveTransfer,
-  Weapon721_OwnershipHandoverCanceled,
-  Weapon721_OwnershipHandoverRequested,
-  Weapon721_OwnershipTransferred,
-  Weapon721_RolesUpdated,
-  Weapon721_Transfer,
-  Weapon721_TransferValidatorUpdated,
-  Weapon721_WeaponGenerated,
-  Weapon721_WeaponMetadataGenerated,
-} from "generated";
+import { indexer, GachaToken_ApprovalForAll, GachaToken_AutomaticApprovalOfTransferValidatorSet, GachaToken_OwnershipHandoverCanceled, GachaToken_OwnershipHandoverRequested, GachaToken_OwnershipTransferred, GachaToken_RolesUpdated, GachaToken_TransferBatch, GachaToken_TransferSingle, GachaToken_TransferValidatorUpdated, GachaToken_URI, GenesisRing_Approval, GenesisRing_ApprovalForAll, GenesisRing_OwnershipHandoverCanceled, GenesisRing_OwnershipHandoverRequested, GenesisRing_OwnershipTransferred, GenesisRing_Transfer, HERO20_Approval, HERO20_OwnershipHandoverCanceled, HERO20_OwnershipHandoverRequested, HERO20_OwnershipTransferred, HERO20_Transfer, HeroERC721AC_Approval, HeroERC721AC_ApprovalForAll, HeroERC721AC_AutomaticApprovalOfTransferValidatorSet, HeroERC721AC_ConsecutiveTransfer, HeroERC721AC_OwnershipHandoverCanceled, HeroERC721AC_OwnershipHandoverRequested, HeroERC721AC_OwnershipTransferred, HeroERC721AC_Transfer, HeroERC721AC_TransferValidatorUpdated, Weapon721_Approval, Weapon721_ApprovalForAll, Weapon721_AutomaticApprovalOfTransferValidatorSet, Weapon721_ConsecutiveTransfer, Weapon721_OwnershipHandoverCanceled, Weapon721_OwnershipHandoverRequested, Weapon721_OwnershipTransferred, Weapon721_RolesUpdated, Weapon721_Transfer, Weapon721_TransferValidatorUpdated, Weapon721_WeaponGenerated, Weapon721_WeaponMetadataGenerated } from "envio";
 
-GachaToken.ApprovalForAll.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GachaToken", event: "ApprovalForAll" },
+  async ({ event, context }) => {
   const entity: GachaToken_ApprovalForAll = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     owner: event.params.owner,
@@ -60,36 +14,48 @@ GachaToken.ApprovalForAll.handler(async ({ event, context }) => {
   };
 
   context.GachaToken_ApprovalForAll.set(entity);
-});
+}
+);
 
-GachaToken.AutomaticApprovalOfTransferValidatorSet.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GachaToken", event: "AutomaticApprovalOfTransferValidatorSet" },
+  async ({ event, context }) => {
   const entity: GachaToken_AutomaticApprovalOfTransferValidatorSet = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     autoApproved: event.params.autoApproved,
   };
 
   context.GachaToken_AutomaticApprovalOfTransferValidatorSet.set(entity);
-});
+}
+);
 
-GachaToken.OwnershipHandoverCanceled.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GachaToken", event: "OwnershipHandoverCanceled" },
+  async ({ event, context }) => {
   const entity: GachaToken_OwnershipHandoverCanceled = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     pendingOwner: event.params.pendingOwner,
   };
 
   context.GachaToken_OwnershipHandoverCanceled.set(entity);
-});
+}
+);
 
-GachaToken.OwnershipHandoverRequested.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GachaToken", event: "OwnershipHandoverRequested" },
+  async ({ event, context }) => {
   const entity: GachaToken_OwnershipHandoverRequested = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     pendingOwner: event.params.pendingOwner,
   };
 
   context.GachaToken_OwnershipHandoverRequested.set(entity);
-});
+}
+);
 
-GachaToken.OwnershipTransferred.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GachaToken", event: "OwnershipTransferred" },
+  async ({ event, context }) => {
   const entity: GachaToken_OwnershipTransferred = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     oldOwner: event.params.oldOwner,
@@ -97,9 +63,12 @@ GachaToken.OwnershipTransferred.handler(async ({ event, context }) => {
   };
 
   context.GachaToken_OwnershipTransferred.set(entity);
-});
+}
+);
 
-GachaToken.RolesUpdated.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GachaToken", event: "RolesUpdated" },
+  async ({ event, context }) => {
   const entity: GachaToken_RolesUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     user: event.params.user,
@@ -107,9 +76,12 @@ GachaToken.RolesUpdated.handler(async ({ event, context }) => {
   };
 
   context.GachaToken_RolesUpdated.set(entity);
-});
+}
+);
 
-GachaToken.TransferBatch.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GachaToken", event: "TransferBatch" },
+  async ({ event, context }) => {
   const entity: GachaToken_TransferBatch = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     operator: event.params.operator,
@@ -120,9 +92,12 @@ GachaToken.TransferBatch.handler(async ({ event, context }) => {
   };
 
   context.GachaToken_TransferBatch.set(entity);
-});
+}
+);
 
-GachaToken.TransferSingle.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GachaToken", event: "TransferSingle" },
+  async ({ event, context }) => {
   const entity: GachaToken_TransferSingle = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     operator: event.params.operator,
@@ -133,9 +108,12 @@ GachaToken.TransferSingle.handler(async ({ event, context }) => {
   };
 
   context.GachaToken_TransferSingle.set(entity);
-});
+}
+);
 
-GachaToken.TransferValidatorUpdated.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GachaToken", event: "TransferValidatorUpdated" },
+  async ({ event, context }) => {
   const entity: GachaToken_TransferValidatorUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     oldValidator: event.params.oldValidator,
@@ -143,9 +121,12 @@ GachaToken.TransferValidatorUpdated.handler(async ({ event, context }) => {
   };
 
   context.GachaToken_TransferValidatorUpdated.set(entity);
-});
+}
+);
 
-GachaToken.URI.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GachaToken", event: "URI" },
+  async ({ event, context }) => {
   const entity: GachaToken_URI = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     value: event.params.value,
@@ -153,9 +134,12 @@ GachaToken.URI.handler(async ({ event, context }) => {
   };
 
   context.GachaToken_URI.set(entity);
-});
+}
+);
 
-GenesisRing.Approval.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GenesisRing", event: "Approval" },
+  async ({ event, context }) => {
   const entity: GenesisRing_Approval = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     owner: event.params.owner,
@@ -164,9 +148,12 @@ GenesisRing.Approval.handler(async ({ event, context }) => {
   };
 
   context.GenesisRing_Approval.set(entity);
-});
+}
+);
 
-GenesisRing.ApprovalForAll.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GenesisRing", event: "ApprovalForAll" },
+  async ({ event, context }) => {
   const entity: GenesisRing_ApprovalForAll = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     owner: event.params.owner,
@@ -175,27 +162,36 @@ GenesisRing.ApprovalForAll.handler(async ({ event, context }) => {
   };
 
   context.GenesisRing_ApprovalForAll.set(entity);
-});
+}
+);
 
-GenesisRing.OwnershipHandoverCanceled.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GenesisRing", event: "OwnershipHandoverCanceled" },
+  async ({ event, context }) => {
   const entity: GenesisRing_OwnershipHandoverCanceled = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     pendingOwner: event.params.pendingOwner,
   };
 
   context.GenesisRing_OwnershipHandoverCanceled.set(entity);
-});
+}
+);
 
-GenesisRing.OwnershipHandoverRequested.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GenesisRing", event: "OwnershipHandoverRequested" },
+  async ({ event, context }) => {
   const entity: GenesisRing_OwnershipHandoverRequested = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     pendingOwner: event.params.pendingOwner,
   };
 
   context.GenesisRing_OwnershipHandoverRequested.set(entity);
-});
+}
+);
 
-GenesisRing.OwnershipTransferred.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GenesisRing", event: "OwnershipTransferred" },
+  async ({ event, context }) => {
   const entity: GenesisRing_OwnershipTransferred = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     oldOwner: event.params.oldOwner,
@@ -203,9 +199,12 @@ GenesisRing.OwnershipTransferred.handler(async ({ event, context }) => {
   };
 
   context.GenesisRing_OwnershipTransferred.set(entity);
-});
+}
+);
 
-GenesisRing.Transfer.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "GenesisRing", event: "Transfer" },
+  async ({ event, context }) => {
   const entity: GenesisRing_Transfer = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     from: event.params.from,
@@ -250,9 +249,12 @@ GenesisRing.Transfer.handler(async ({ event, context }) => {
       context.GamePlayer.set(updatedPlayer);
     }
   }
-});
+}
+);
 
-HERO20.Approval.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HERO20", event: "Approval" },
+  async ({ event, context }) => {
   const entity: HERO20_Approval = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     owner: event.params.owner,
@@ -261,27 +263,36 @@ HERO20.Approval.handler(async ({ event, context }) => {
   };
 
   context.HERO20_Approval.set(entity);
-});
+}
+);
 
-HERO20.OwnershipHandoverCanceled.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HERO20", event: "OwnershipHandoverCanceled" },
+  async ({ event, context }) => {
   const entity: HERO20_OwnershipHandoverCanceled = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     pendingOwner: event.params.pendingOwner,
   };
 
   context.HERO20_OwnershipHandoverCanceled.set(entity);
-});
+}
+);
 
-HERO20.OwnershipHandoverRequested.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HERO20", event: "OwnershipHandoverRequested" },
+  async ({ event, context }) => {
   const entity: HERO20_OwnershipHandoverRequested = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     pendingOwner: event.params.pendingOwner,
   };
 
   context.HERO20_OwnershipHandoverRequested.set(entity);
-});
+}
+);
 
-HERO20.OwnershipTransferred.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HERO20", event: "OwnershipTransferred" },
+  async ({ event, context }) => {
   const entity: HERO20_OwnershipTransferred = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     oldOwner: event.params.oldOwner,
@@ -289,9 +300,12 @@ HERO20.OwnershipTransferred.handler(async ({ event, context }) => {
   };
 
   context.HERO20_OwnershipTransferred.set(entity);
-});
+}
+);
 
-HERO20.Transfer.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HERO20", event: "Transfer" },
+  async ({ event, context }) => {
   const entity: HERO20_Transfer = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     from: event.params.from,
@@ -300,9 +314,12 @@ HERO20.Transfer.handler(async ({ event, context }) => {
   };
 
   context.HERO20_Transfer.set(entity);
-});
+}
+);
 
-HeroERC721AC.Approval.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HeroERC721AC", event: "Approval" },
+  async ({ event, context }) => {
   const entity: HeroERC721AC_Approval = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     owner: event.params.owner,
@@ -311,9 +328,12 @@ HeroERC721AC.Approval.handler(async ({ event, context }) => {
   };
 
   context.HeroERC721AC_Approval.set(entity);
-});
+}
+);
 
-HeroERC721AC.ApprovalForAll.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HeroERC721AC", event: "ApprovalForAll" },
+  async ({ event, context }) => {
   const entity: HeroERC721AC_ApprovalForAll = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     owner: event.params.owner,
@@ -322,18 +342,24 @@ HeroERC721AC.ApprovalForAll.handler(async ({ event, context }) => {
   };
 
   context.HeroERC721AC_ApprovalForAll.set(entity);
-});
+}
+);
 
-HeroERC721AC.AutomaticApprovalOfTransferValidatorSet.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HeroERC721AC", event: "AutomaticApprovalOfTransferValidatorSet" },
+  async ({ event, context }) => {
   const entity: HeroERC721AC_AutomaticApprovalOfTransferValidatorSet = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     autoApproved: event.params.autoApproved,
   };
 
   context.HeroERC721AC_AutomaticApprovalOfTransferValidatorSet.set(entity);
-});
+}
+);
 
-HeroERC721AC.ConsecutiveTransfer.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HeroERC721AC", event: "ConsecutiveTransfer" },
+  async ({ event, context }) => {
   const entity: HeroERC721AC_ConsecutiveTransfer = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     fromTokenId: event.params.fromTokenId,
@@ -343,27 +369,36 @@ HeroERC721AC.ConsecutiveTransfer.handler(async ({ event, context }) => {
   };
 
   context.HeroERC721AC_ConsecutiveTransfer.set(entity);
-});
+}
+);
 
-HeroERC721AC.OwnershipHandoverCanceled.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HeroERC721AC", event: "OwnershipHandoverCanceled" },
+  async ({ event, context }) => {
   const entity: HeroERC721AC_OwnershipHandoverCanceled = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     pendingOwner: event.params.pendingOwner,
   };
 
   context.HeroERC721AC_OwnershipHandoverCanceled.set(entity);
-});
+}
+);
 
-HeroERC721AC.OwnershipHandoverRequested.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HeroERC721AC", event: "OwnershipHandoverRequested" },
+  async ({ event, context }) => {
   const entity: HeroERC721AC_OwnershipHandoverRequested = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     pendingOwner: event.params.pendingOwner,
   };
 
   context.HeroERC721AC_OwnershipHandoverRequested.set(entity);
-});
+}
+);
 
-HeroERC721AC.OwnershipTransferred.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HeroERC721AC", event: "OwnershipTransferred" },
+  async ({ event, context }) => {
   const entity: HeroERC721AC_OwnershipTransferred = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     oldOwner: event.params.oldOwner,
@@ -371,9 +406,12 @@ HeroERC721AC.OwnershipTransferred.handler(async ({ event, context }) => {
   };
 
   context.HeroERC721AC_OwnershipTransferred.set(entity);
-});
+}
+);
 
-HeroERC721AC.Transfer.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HeroERC721AC", event: "Transfer" },
+  async ({ event, context }) => {
   const entity: HeroERC721AC_Transfer = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     from: event.params.from,
@@ -418,9 +456,12 @@ HeroERC721AC.Transfer.handler(async ({ event, context }) => {
       context.GamePlayer.set(updatedPlayer);
     }
   }
-});
+}
+);
 
-HeroERC721AC.TransferValidatorUpdated.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "HeroERC721AC", event: "TransferValidatorUpdated" },
+  async ({ event, context }) => {
   const entity: HeroERC721AC_TransferValidatorUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     oldValidator: event.params.oldValidator,
@@ -428,9 +469,12 @@ HeroERC721AC.TransferValidatorUpdated.handler(async ({ event, context }) => {
   };
 
   context.HeroERC721AC_TransferValidatorUpdated.set(entity);
-});
+}
+);
 
-Weapon721.Approval.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Weapon721", event: "Approval" },
+  async ({ event, context }) => {
   const entity: Weapon721_Approval = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     owner: event.params.owner,
@@ -439,9 +483,12 @@ Weapon721.Approval.handler(async ({ event, context }) => {
   };
 
   context.Weapon721_Approval.set(entity);
-});
+}
+);
 
-Weapon721.ApprovalForAll.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Weapon721", event: "ApprovalForAll" },
+  async ({ event, context }) => {
   const entity: Weapon721_ApprovalForAll = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     owner: event.params.owner,
@@ -450,18 +497,24 @@ Weapon721.ApprovalForAll.handler(async ({ event, context }) => {
   };
 
   context.Weapon721_ApprovalForAll.set(entity);
-});
+}
+);
 
-Weapon721.AutomaticApprovalOfTransferValidatorSet.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Weapon721", event: "AutomaticApprovalOfTransferValidatorSet" },
+  async ({ event, context }) => {
   const entity: Weapon721_AutomaticApprovalOfTransferValidatorSet = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     autoApproved: event.params.autoApproved,
   };
 
   context.Weapon721_AutomaticApprovalOfTransferValidatorSet.set(entity);
-});
+}
+);
 
-Weapon721.ConsecutiveTransfer.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Weapon721", event: "ConsecutiveTransfer" },
+  async ({ event, context }) => {
   const entity: Weapon721_ConsecutiveTransfer = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     fromTokenId: event.params.fromTokenId,
@@ -471,27 +524,36 @@ Weapon721.ConsecutiveTransfer.handler(async ({ event, context }) => {
   };
 
   context.Weapon721_ConsecutiveTransfer.set(entity);
-});
+}
+);
 
-Weapon721.OwnershipHandoverCanceled.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Weapon721", event: "OwnershipHandoverCanceled" },
+  async ({ event, context }) => {
   const entity: Weapon721_OwnershipHandoverCanceled = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     pendingOwner: event.params.pendingOwner,
   };
 
   context.Weapon721_OwnershipHandoverCanceled.set(entity);
-});
+}
+);
 
-Weapon721.OwnershipHandoverRequested.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Weapon721", event: "OwnershipHandoverRequested" },
+  async ({ event, context }) => {
   const entity: Weapon721_OwnershipHandoverRequested = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     pendingOwner: event.params.pendingOwner,
   };
 
   context.Weapon721_OwnershipHandoverRequested.set(entity);
-});
+}
+);
 
-Weapon721.OwnershipTransferred.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Weapon721", event: "OwnershipTransferred" },
+  async ({ event, context }) => {
   const entity: Weapon721_OwnershipTransferred = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     oldOwner: event.params.oldOwner,
@@ -499,9 +561,12 @@ Weapon721.OwnershipTransferred.handler(async ({ event, context }) => {
   };
 
   context.Weapon721_OwnershipTransferred.set(entity);
-});
+}
+);
 
-Weapon721.RolesUpdated.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Weapon721", event: "RolesUpdated" },
+  async ({ event, context }) => {
   const entity: Weapon721_RolesUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     user: event.params.user,
@@ -509,9 +574,12 @@ Weapon721.RolesUpdated.handler(async ({ event, context }) => {
   };
 
   context.Weapon721_RolesUpdated.set(entity);
-});
+}
+);
 
-Weapon721.Transfer.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Weapon721", event: "Transfer" },
+  async ({ event, context }) => {
   const entity: Weapon721_Transfer = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     from: event.params.from,
@@ -556,9 +624,12 @@ Weapon721.Transfer.handler(async ({ event, context }) => {
       context.GamePlayer.set(updatedPlayer);
     }
   }
-});
+}
+);
 
-Weapon721.TransferValidatorUpdated.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Weapon721", event: "TransferValidatorUpdated" },
+  async ({ event, context }) => {
   const entity: Weapon721_TransferValidatorUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     oldValidator: event.params.oldValidator,
@@ -566,9 +637,12 @@ Weapon721.TransferValidatorUpdated.handler(async ({ event, context }) => {
   };
 
   context.Weapon721_TransferValidatorUpdated.set(entity);
-});
+}
+);
 
-Weapon721.WeaponGenerated.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Weapon721", event: "WeaponGenerated" },
+  async ({ event, context }) => {
   const entity: Weapon721_WeaponGenerated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     to: event.params.to,
@@ -576,9 +650,12 @@ Weapon721.WeaponGenerated.handler(async ({ event, context }) => {
   };
 
   context.Weapon721_WeaponGenerated.set(entity);
-});
+}
+);
 
-Weapon721.WeaponMetadataGenerated.handler(async ({ event, context }) => {
+indexer.onEvent(
+  { contract: "Weapon721", event: "WeaponMetadataGenerated" },
+  async ({ event, context }) => {
   const entity: Weapon721_WeaponMetadataGenerated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     event_id: event.params.id,
@@ -586,4 +663,5 @@ Weapon721.WeaponMetadataGenerated.handler(async ({ event, context }) => {
   };
 
   context.Weapon721_WeaponMetadataGenerated.set(entity);
-});
+}
+);

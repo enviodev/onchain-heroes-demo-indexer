@@ -1,8 +1,5 @@
 import assert from "assert";
-import { 
-  TestHelpers,
-  GachaToken_ApprovalForAll
-} from "generated";
+import { TestHelpers, GachaToken_ApprovalForAll } from "envio";
 const { MockDb, GachaToken } = TestHelpers;
 
 describe("GachaToken contract ApprovalForAll event tests", () => {

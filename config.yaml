@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./node_modules/envio/evm.schema.json
 name: envio-indexer
-networks:
+chains:
 - id: 1
   start_block: 0
   contracts:
@@ -74,5 +74,3 @@ networks:
     - event: TransferValidatorUpdated(address oldValidator, address newValidator)
     - event: WeaponGenerated(address to, uint256 qty)
     - event: WeaponMetadataGenerated(uint256 id, uint32 metadata)
-unordered_multichain_mode: true
-preload_handlers: true
